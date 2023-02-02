@@ -1,0 +1,17 @@
+FROM centos:7
+MAINTAINER budhiramsahani421@gmial.com
+LABEL Mobile="8369274062"
+RUN yum install -y httpd \
+     zip \
+     unzip
+ADD https://www.free-css.com/assets/files/free-css-templates/download/page287/dicet-tv.zip /var/www/html
+WORKDIR /var/www/html
+RUN unzip dicet-tv.zip
+RUN cp -rvf dicet-tv/* .
+CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+EXPOSE 80
+
+#docker image build -t cloud:18 .
+#docker container run -itd -p 8000:80 cloud:18
+#docker container ls 
+#yum install elinks 
